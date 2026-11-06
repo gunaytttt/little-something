@@ -55,7 +55,7 @@ footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
 <p><em>Working document, November 2026. How the product reaches the market, how it makes money, what a gift costs and what the owner gains. Figures marked as estimates are my own assumptions, not vendor quotes.</em></p>
 <h2>Summary</h2>
 <p>Little Something launches as a <strong>standalone app owned by a bank</strong>, following the Tikkie model. The app keeps its own brand and works for customers of any Dutch bank. The bank holds the licence and moves the money, so there's no separate payment provider and no fixed minimums.</p>
-<p>Individuals pay little or nothing, so the product can spread. Money comes from a small giver fee, premium looks, printed cards and brand offers. For the bank, the bigger gains are reach beyond its own customers, new accounts from receivers, and deposits waiting in gifts.</p>
+<p>Individuals pay little or nothing, so the product can spread. The core experience, including every look and printing the card, stays free. Money comes from brand offers tied to what the gift is for and, later, a small giver fee. For the bank, the bigger gains are reach beyond its own customers, new accounts from receivers, and deposits waiting in gifts.</p>
 <p>The current flow and designs stay as they are. They were designed for a standalone app, and this path keeps it standalone.</p>
 <h2>Launch paths considered</h2>
 <div class="tablewrap"><table>
@@ -258,6 +258,61 @@ footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
 <li><strong>Earning from gifts nobody opens.</strong> EU e-money generally has to stay redeemable, there's no expiry by design, and profiting from forgotten gifts goes against the forgetting problem the product solves.</li>
 <li><strong>Corporate accelerators</strong> (ABN AMRO with Techstars, Rabobank). Real programs, but they back founding teams with traction, and this year's themes are business infrastructure. A weak fit for a consumer gifting product at concept stage.</li>
 </ul>
+<h2>Growth paths for later</h2>
+<p>Group collection and pooling were never ruled out for good. For v1 I chose to focus on what nobody offers today, the personal gift experience, rather than on collecting money, which other products already do well. Once single gifts work, collecting for one person or one event is a natural next step.</p>
+<h3>Event gift mailbox</h3>
+<p><strong>The idea.</strong> A host, for example a couple getting married, creates one gift mailbox for their event and shares a QR code or link on the invitation. Each guest who wants to give money makes their own gift through the usual flow: a photo (from the event, of the hosts, or a GIF or stock image from the app), a note and the money. Every gift lands in the host's mailbox, and the host sees who sent what, with their notes, ready for thank-yous.</p>
+<p><strong>Why it's interesting.</strong></p>
+<ul>
+<li><strong>A clearer reason to pay.</strong> The host gets real value (one link, every gift in one place, a list for thank-yous), so a fee for the host feels fair. Nothing is taken out of any gift.</li>
+<li><strong>Growth.</strong> One event can bring 50 to 150 guests into the product, many of them customers of other banks. For a bank owner, that's reach and new-customer moments at a scale a single gift doesn't reach.</li>
+<li><strong>It keeps the core.</strong> Each guest still makes a personal gift. It's many personal gifts landing in one place, not one pooled transfer.</li>
+</ul>
+<p><strong>What exists today.</strong> US wedding sites already offer cash funds. From their public pages:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Couple personalizes the fund</th>
+<th>Guest adds a note or visual</th>
+<th>Couple sees who gave what</th>
+<th>Fees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zola</td>
+<td>Yes, photos and notes</td>
+<td>Not mentioned</td>
+<td>Notified per contribution</td>
+<td>2.5% on honeymoon funds, paid by guest or couple</td>
+</tr>
+<tr>
+<td>Joy (withjoy)</td>
+<td>Yes</td>
+<td>A "personalized card" after giving; no photo or GIF mentioned</td>
+<td>Yes, a tracker for thank-yous</td>
+<td>None from Joy; Stripe card fees and $1.70 per payout</td>
+</tr>
+<tr>
+<td>The Knot</td>
+<td>Yes, a note and photo</td>
+<td>Not mentioned</td>
+<td>Yes, "who gifted what"</td>
+<td>2.5% if the guest pays by card</td>
+</tr>
+</tbody>
+</table></div>
+<p>So tracking who gave what is already solved. The gap is the guest's own expression: none of them let a guest make a gift with their own photo, note and reveal.</p>
+<p><strong>Open questions.</strong></p>
+<ul>
+<li>Pricing: these sites charge between nothing and 2.5%, so a flat host fee has to be clearly worth more than free. A free basic mailbox with a paid tier for the host (event design, a keepsake page of all the gifts, a printed album) may be easier to justify.</li>
+<li>How comfortable people are with a money link on an invitation. In some cultures money at a wedding is expected; in others it can feel pushy. Worth asking in interviews.</li>
+<li>Whether European couples use these US sites, and what European wedding sites offer.</li>
+<li>The guest flow starts from the host's link, so event details could be pre-filled. A separate flow to design.</li>
+<li>The product rule "the giver pays, never the receiver" would become "nobody pays out of a gift".</li>
+</ul>
+<p>Sources: <a href="https://www.zola.com/wedding-registry/how-cash-gifts-work" target="_blank" rel="noopener">Zola</a>, <a href="https://withjoy.com/cash-fund-registry/?l=en-CA" target="_blank" rel="noopener">Joy</a>, <a href="https://theknot.com/content/cash-registry-the-newlywed-fund" target="_blank" rel="noopener">The Knot</a></p>
 <h2>Open questions</h2>
 <ul>
 <li>When to switch on the giver fee, at what level, and what has to be true first (enough repeat givers? a clear trust signal?).</li>
