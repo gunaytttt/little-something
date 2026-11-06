@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>User Stories · Little Something</title>
+<meta name="description" content="User Stories, a working document behind the Little Something case study by Gunay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a quiet, neutral reading page. Product first (hero phone + step cards with real screens), then the story in a 68ch column. The screens carry the brand; the page only borrows its rose and cobalt for accents. */
+:root{
+  --bg:#f6f4f5; --surface:#fbf9fa; --ink:#1d1a1c; --muted:#686165; --line:#e4dfe2;
+  --rose:#b8435f; --cobalt:#3a57b8; --rose-soft:#f7e4e9; --cobalt-soft:#e5eaf8;
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;padding:0 max(16px,env(safe-area-inset-left,0px)) 80px}
+main{max-width:760px;margin:0 auto}
+.back{display:inline-block;margin:32px 0 8px;font-size:15px;color:var(--cobalt);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,46px);margin:12px 0 8px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:20px;margin:32px 0 8px}h4{font-size:17px;margin:24px 0 6px}
+p,ul,ol{margin:0 0 14px}li{margin:4px 0}
+a{color:var(--cobalt);text-underline-offset:3px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+em{color:var(--muted)}
+.tablewrap{overflow-x:auto;margin:16px 0 20px;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(40,22,30,.05),0 8px 24px -10px rgba(40,22,30,.16)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.math{overflow-x:auto;margin:12px 0 18px;padding:14px 16px;background:var(--surface);border-radius:12px}
+blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rose);color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em}
+footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html#appendix">&larr; Back to the case study</a>
+<p class="meta">Little Something · Working document · November 2026</p>
+<h1>User Stories</h1>
+<p><em>Working document, last updated November 2026. Each group traces to the goal and requirement group with the same number in the PRD. Written for the demo and a real launch; where a story only applies to one, it says so.</em></p>
+<h2>1. Attach a stated intent</h2>
+<p><strong>As a giver, I want to write a title and a note, so the receiver understands what the money is for and feels appreciated.</strong></p>
+<ul>
+<li>The giver can write a short title. The title is required.</li>
+<li>The giver can write a longer note. The note is optional.</li>
+<li>Title and note are both visible to the receiver when they open the gift, together with the amount.</li>
+<li>Nothing in the flow suggests the money must be spent on the stated intent.</li>
+<li>The app may offer prompts if the giver asks for help, but never writes the note for them.</li>
+</ul>
+<p><strong>As a giver, I want to design the gift before I add money, so the effort comes first and paying feels like part of the gift.</strong></p>
+<ul>
+<li>Creating a gift starts with the title, note, look and photo. Adding money comes after.</li>
+<li>The giver can start as a guest and only logs in when they add money.</li>
+</ul>
+<p><strong>As a giver, I want to express my intent visually, so the receiver has a lovely experience and feels special.</strong></p>
+<ul>
+<li>The giver can add at least one photo.</li>
+<li>The giver can choose a look and an effect.</li>
+<li>Personalizing is optional. A gift without it still works and gets a default look.</li>
+<li>The giver can preview the gift exactly as the receiver will see it.</li>
+</ul>
+<h2>2. Present the gift to fit the moment</h2>
+<p><strong>As a giver, I want to share the gift by link in the way that fits the relationship, so the receiver can get it quickly and easily.</strong></p>
+<ul>
+<li>The giver can copy the link and share it anywhere.</li>
+<li>The giver can share straight to the messaging apps, social media and email on their phone, through the phone's native share sheet.</li>
+<li>Real launch only: the link shows a preview with the gift's title and image where the app supports it. This needs server-side tags, so the demo leaves it out.</li>
+</ul>
+<p><strong>As a giver, I want to hand the gift over in person, so I don't arrive empty handed.</strong></p>
+<ul>
+<li>The giver can create a printable version of the gift.</li>
+<li>The printed card includes a QR code that opens the gift.</li>
+<li>It can be printed to fold like a greeting card or to fit inside an envelope.</li>
+</ul>
+<p><strong>As a giver, I want to schedule when the gift is sent, so I can prepare it early without it arriving too soon.</strong></p>
+<ul>
+<li>The giver can pick a future date and time instead of sending now.</li>
+<li>A scheduled gift shows "Scheduled for [date and time]" on the home screen.</li>
+<li>At the scheduled time, the giver is prompted to send it with one tap. Apps can't send through WhatsApp on someone's behalf, so the app never sends silently.</li>
+<li>Sending a scheduled gift early cancels the schedule after a one-line confirm.</li>
+<li>Demo: the prompt shows as a status on the home screen, not a push notification.</li>
+</ul>
+<h2>3. Opening the gift and keeping the money separate</h2>
+<p><strong>As a receiver, I want opening the gift to feel like an event, so it feels like a present rather than a payment.</strong></p>
+<ul>
+<li>Opened from a shared link or the printed card's QR code, the gift starts sealed ("[Giver] prepped this just for you"), then opens to the look, note and amount.</li>
+<li>No app, account or verification is needed to open it.</li>
+<li>Opened again later from the Receiving tab, it goes straight to the opened gift and the reveal doesn't replay.</li>
+</ul>
+<p><strong>As a receiver, I want to know the money is ready for me, so I'm sure the gift arrived properly.</strong></p>
+<ul>
+<li>The opened gift shows that the money is ready and can be moved to the receiver's own bank account or card.</li>
+</ul>
+<p><strong>As a receiver, I want to understand how moving the money works, so I can decide when to do it.</strong></p>
+<ul>
+<li>It's clear that the full amount moves at once.</li>
+<li>It's clear that money can't be moved back into the gift.</li>
+<li>There is no expiry for now, so nothing suggests a deadline.</li>
+<li>The receiver can choose more than one way to receive it, for example a bank account or a card.</li>
+</ul>
+<h2>4. Full freedom for the receiver</h2>
+<p><strong>As a receiver, I want to move and spend the money without the giver knowing, so I don't feel watched or feel I have to justify when and how I use it.</strong></p>
+<ul>
+<li>The giver sees only that the gift was opened, never whether or when the money was moved.</li>
+<li>The app never asks why or how the money will be spent.</li>
+<li>The receiver can move the money right away or at any later time, with no deadline.</li>
+</ul>
+<h2>5. Keep track of the gift over time</h2>
+<p><strong>As a receiver, I want to keep the gift as a card I can look back on, so I remember the kind words and effort, not just the money.</strong></p>
+<ul>
+<li>The receiver can save the gift as an image to their own device, whatever happens to the money.</li>
+<li>The screen for moving the money offers to save the gift as an image first.</li>
+</ul>
+<p><strong>As a receiver, I want a reminder if I don't move the money right away, so I don't forget about the gift.</strong></p>
+<ul>
+<li>On the opened gift, the receiver can ask for a nudge later ("Want a nudge later?").</li>
+<li>They can choose "Just email me a reminder" without making an account.</li>
+<li>Or they can log in with Apple, Google or email, then pick when to be reminded. They return to the same opened gift, and the confirmation reads "Reminder set. You'll find this gift in your Receiving tab."</li>
+<li>An account is never needed to open the gift or move the money.</li>
+</ul>
+<p><strong>As a giver, I want to add the receiver's phone or email, so the right person can move the money.</strong></p>
+<ul>
+<li>Adding a contact is optional. The receiver's name is never asked for.</li>
+<li>The contact is used only to send the receiver a verification code when they move the money, and the giver is told so.</li>
+<li>Without a contact, the receiver enters their own when they move the money.</li>
+</ul>
+<h2>6. Account, verification and funding</h2>
+<p><strong>As a giver, I want to know this is a safe place to enter my payment details, so I don't worry about being scammed or losing money.</strong></p>
+<ul>
+<li>The payment screen shows trust and security information before payment is completed.</li>
+<li>The giver's identity and payment are verified before money is added, at the level the partner requires.</li>
+<li>There is a maximum amount per gift, tied to the verification level. Thresholds are still open (PRD open decision 2).</li>
+</ul>
+<p><strong>As a giver, I want only the right person to be able to move the money, so it can't be misused by someone else.</strong></p>
+<ul>
+<li>The receiver is verified when they move the money, not when they open the gift.</li>
+<li>How much checking a receiver from another bank goes through is still open (PRD open decision 8).</li>
+</ul>
+<p><strong>As a giver, I want more than one way to pay, so I'm never stuck after putting effort into the gift.</strong></p>
+<ul>
+<li>The giver can choose from more than one payment method, for example iDEAL, a card or a digital wallet like Apple Pay or Google Pay.</li>
+<li>Demo: Apple Pay only.</li>
+</ul>
+<p><strong>As a giver or receiver, I want to know when the money will arrive, so I know when it's ready to use.</strong></p>
+<ul>
+<li>The app shows the expected or confirmed arrival time after a payment or a move to the bank starts.</li>
+<li>Real launch only, since money is mocked in the demo.</li>
+</ul>
+<h2>7. Home screen and drafts</h2>
+<p><strong>As a giver, I want a home screen with my latest gifts and their status, so I know what I've sent and what's still a draft.</strong></p>
+<ul>
+<li>The home screen is where the giver lands, not the creation flow.</li>
+<li>It shows the most recent gifts (for example the latest five), each with its status: Draft, Ready to send, Sent or Opened.</li>
+<li>Tapping a draft opens it for editing. Tapping any other gift opens its full preview with a status card on top.</li>
+</ul>
+<p><strong>As a giver, I want to see all my gifts, including archived ones, so I can look back without cluttering the home screen.</strong></p>
+<ul>
+<li>"See all" opens every gift, beyond the recent ones.</li>
+<li>Archived gifts appear here, not on the home screen.</li>
+</ul>
+<p><strong>As a giver, I want starting a new gift to always be one tap away, so making a gift never feels like a chore.</strong></p>
+<ul>
+<li>A create action is always visible on the home screen.</li>
+</ul>
+<p><strong>As a giver, I want my gift saved automatically while I make it, so I don't lose my note or photos if I leave.</strong></p>
+<ul>
+<li>Title, note, photos and look are saved as a draft while the giver works, without a save button.</li>
+<li>The giver can open a draft from the home screen and continue exactly where they left off.</li>
+<li>Logging out doesn't delete a draft. Real launch only, since accounts are mocked in the demo.</li>
+</ul>
+<p><strong>As a giver, I want to delete drafts I no longer want and archive gifts I've finished with, so the home screen stays tidy.</strong></p>
+<ul>
+<li>A draft can be deleted from the home screen, since no money is in it yet.</li>
+<li>Deleting a gift that already holds money isn't offered until the cancel and refund rules are decided (PRD open decision 1).</li>
+<li>An opened gift can be archived. It leaves the home screen but stays on "See all", with its content kept.</li>
+</ul>
+</main>
+<footer>Little Something is a self-directed concept by Gunay.</footer>
+</body>
+</html>

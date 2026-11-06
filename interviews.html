@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interviews · Little Something</title>
+<meta name="description" content="Interviews, a working document behind the Little Something case study by Gunay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a quiet, neutral reading page. Product first (hero phone + step cards with real screens), then the story in a 68ch column. The screens carry the brand; the page only borrows its rose and cobalt for accents. */
+:root{
+  --bg:#f6f4f5; --surface:#fbf9fa; --ink:#1d1a1c; --muted:#686165; --line:#e4dfe2;
+  --rose:#b8435f; --cobalt:#3a57b8; --rose-soft:#f7e4e9; --cobalt-soft:#e5eaf8;
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;padding:0 max(16px,env(safe-area-inset-left,0px)) 80px}
+main{max-width:760px;margin:0 auto}
+.back{display:inline-block;margin:32px 0 8px;font-size:15px;color:var(--cobalt);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,46px);margin:12px 0 8px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:20px;margin:32px 0 8px}h4{font-size:17px;margin:24px 0 6px}
+p,ul,ol{margin:0 0 14px}li{margin:4px 0}
+a{color:var(--cobalt);text-underline-offset:3px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+em{color:var(--muted)}
+.tablewrap{overflow-x:auto;margin:16px 0 20px;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(40,22,30,.05),0 8px 24px -10px rgba(40,22,30,.16)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.math{overflow-x:auto;margin:12px 0 18px;padding:14px 16px;background:var(--surface);border-radius:12px}
+blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rose);color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em}
+footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html#appendix">&larr; Back to the case study</a>
+<p class="meta">Little Something · Working document · November 2026</p>
+<h1>Interviews</h1>
+<p><em>Excerpt from the discovery work, autumn 2026. Interviewees are anonymised.</em></p>
+<h2>About the interviews</h2>
+<p>Four phone interviews of 15 to 20 minutes, with people in their 20s and 30s from my own network, about giving and receiving money and gift cards. Before and during the interviews I wrote down 19 assumptions to check the answers against, and added a 20th afterwards.</p>
+<p><strong>Limitations</strong><strong>:</strong> the sample is small, I knew everyone, and it leans towards people who put real effort into gifts. I treat it as signal for an early adopter group, not as proof for the wider market. People who don't enjoy giving gifts are covered through Reddit threads and survey data instead. Some assumptions were written after the first interview had already happened, not all in advance.</p>
+<h2>Interview guide</h2>
+<p>Questions focus on past behaviour, not opinions about a product. The concept was only mentioned near the end.</p>
+<ol>
+<li><strong>Warm up.</strong> How often do you give and receive gifts? Any occasions that stand out?</li>
+<li><strong>A recent gift.</strong> Tell me about a gift you gave recently that you felt good about. What made it feel right?</li>
+<li><strong>Giving money.</strong> Tell me about a time you gave money or a gift card. How did you decide the amount and format, and how did you hand it over? Does a €20 gift get less thought than a €100 one?</li>
+<li><strong>The handover.</strong> The last time you sent money digitally as a gift, what did you say alongside it? Did it feel normal or slightly awkward?</li>
+<li><strong>Intent.</strong> Have you given money with something specific in mind, versus no strings attached? How did that feel different?</li>
+<li><strong>Freedom.</strong> If you gave money "for" something and the person spent it on a bill instead, how would you feel?</li>
+<li><strong>Closeness.</strong> Does how you give money change between a close friend and a coworker or distant relative? What do you do when you're not close enough to pick a gift, but plain cash feels too casual? Would €30 with a nice card feel different from €30 by Tikkie?</li>
+<li><strong>Receiving.</strong> Tell me about receiving money or a gift card. Did it still feel like a gift a week later? Do you remember how it was given? Have you ever wanted money but felt awkward asking?</li>
+<li><strong>Losing track.</strong> Have you lost or forgotten a gift card, or spent gift money on something else by accident?</li>
+<li><strong>Switching.</strong> If there were an app for giving money in a more personal way, would you use it, or go back to Tikkie, WhatsApp or cash out of habit? Be honest.</li>
+<li><strong>Closing.</strong> Overall, how do you feel about money or gift cards as presents?</li>
+</ol>
+<h2>What each interview showed</h2>
+<p><strong>Interviewee 1.</strong> Gives family cash without a second thought ("cash is king"), but for friends cash "lacks personality". Once gave a departing colleague a gift card matched to their taste. Received €20 from their parents "for pizza" and a week later it still felt like a gift, partly because the parents clearly made an effort to send it. Liked the idea of keeping gift money mentally separate.</p>
+<p><strong>Interviewee 2.</strong> Prefers choosing a real, specific gift and falls back on money only when the budget can't cover the whole thing. Keeps gift cash in a literal money box at home, a manual version of the product. Wants group contributions to land at the same moment. The handwritten note matters more than visuals, and AI help with the message would undercut the effort.</p>
+<p><strong>Interviewee 3.</strong> Prefers giving people exactly what they asked for. Finds plastic gift cards wasteful but still wants the handover to feel physical. A fully open prepaid card would feel rude unless asked for, while a gift card for something specific would be lovely. Fine with receivers spending the money on something else. Suggested Apple or Google Wallet unprompted, so gifts aren't forgotten.</p>
+<p><strong>Interviewee 4.</strong> Family culture is cash first, with the wedding envelope ritual. Their friend group invented its own low-tech version of this product: collect cash, print a designed voucher, hand it over, and move the money when the person asks. Around 80% of receivers had to be chased to claim it. Still hadn't used an experience gift after more than a year: "you kind of postpone the feeling". Estimated they'd use the app in "40 to 60%" of cases, and raised the regulatory side unprompted.</p>
+<h2>Assumptions after four interviews</h2>
+<p>The ones that shaped the product most. The full list of 20 is in my discovery notes.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Status</th>
+<th>What it changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>People want a way to keep a money gift feeling like a gift after it's received</td>
+<td>Supported</td>
+<td>The money stays labelled as a gift until moved</td>
+</tr>
+<tr>
+<td>Flexible money beats brand-locked gift cards</td>
+<td>Mixed: fully open money can feel rude, a specific intent feels lovely</td>
+<td>Intent lives in the title and note, at any level</td>
+</tr>
+<tr>
+<td>Givers want to say what the money is for</td>
+<td>Confirmed by all four</td>
+<td>Title and note are central</td>
+</tr>
+<tr>
+<td>A physical handover or envelope ritual matters widely, not just to me</td>
+<td>Confirmed by all four, across three cultures</td>
+<td>Sealed reveal and printable card</td>
+</tr>
+<tr>
+<td>Gift cards get lost or forgotten</td>
+<td>Confirmed</td>
+<td>The gift lives on the phone, with an optional reminder</td>
+</tr>
+<tr>
+<td>Receivers spending the money elsewhere doesn't bother givers</td>
+<td>Confirmed unprompted by two</td>
+<td>The giver sees only "Opened"</td>
+</tr>
+<tr>
+<td>Money feels impersonal</td>
+<td>True for friends, not within families</td>
+<td>Focus on close friends and people far away</td>
+</tr>
+<tr>
+<td>People would really switch to a new app</td>
+<td>One calibrated answer: "40 to 60%" of cases</td>
+<td>Adoption is situational; still to test</td>
+</tr>
+<tr>
+<td>A new app holding money needs trust</td>
+<td>Raised unprompted, with the regulation behind it</td>
+<td>Licensed partner, later a bank-owned launch</td>
+</tr>
+</tbody>
+</table></div>
+<h2>New findings that weren't on the list</h2>
+<ul>
+<li><strong>AI-written notes break the gift.</strong> The objection was to AI writing the message, not to AI as a design tool: one group used ChatGPT to design a printed voucher without any discomfort.</li>
+<li><strong>Need matters as much as closeness.</strong> People put little effort into gifts for a coworker and for a wealthy parent who "has everything", for different reasons.</li>
+<li><strong>Digital and physical are two separate choices.</strong> Someone can want the money digital and the handover physical.</li>
+<li><strong>The giver carries a burden too.</strong> In one group the giver had to chase most receivers to claim their money. I decided against a giver reminder for now, to protect the receiver's privacy.</li>
+<li><strong>Workarounds wear out.</strong> One friend group moved from homemade vouchers to wish list apps after a few years.</li>
+</ul>
+</main>
+<footer>Little Something is a self-directed concept by Gunay.</footer>
+</body>
+</html>

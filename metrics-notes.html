@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metrics working notes · Little Something</title>
+<meta name="description" content="Metrics working notes, a working document behind the Little Something case study by Gunay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a quiet, neutral reading page. Product first (hero phone + step cards with real screens), then the story in a 68ch column. The screens carry the brand; the page only borrows its rose and cobalt for accents. */
+:root{
+  --bg:#f6f4f5; --surface:#fbf9fa; --ink:#1d1a1c; --muted:#686165; --line:#e4dfe2;
+  --rose:#b8435f; --cobalt:#3a57b8; --rose-soft:#f7e4e9; --cobalt-soft:#e5eaf8;
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;padding:0 max(16px,env(safe-area-inset-left,0px)) 80px}
+main{max-width:760px;margin:0 auto}
+.back{display:inline-block;margin:32px 0 8px;font-size:15px;color:var(--cobalt);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,46px);margin:12px 0 8px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:20px;margin:32px 0 8px}h4{font-size:17px;margin:24px 0 6px}
+p,ul,ol{margin:0 0 14px}li{margin:4px 0}
+a{color:var(--cobalt);text-underline-offset:3px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+em{color:var(--muted)}
+.tablewrap{overflow-x:auto;margin:16px 0 20px;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(40,22,30,.05),0 8px 24px -10px rgba(40,22,30,.16)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.math{overflow-x:auto;margin:12px 0 18px;padding:14px 16px;background:var(--surface);border-radius:12px}
+blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rose);color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em}
+footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html#appendix">&larr; Back to the case study</a>
+<p class="meta">Little Something · Working document · November 2026</p>
+<h1>Metrics working notes</h1>
+<p>The numbers behind the success metrics section of the case study. Every figure is a target or an assumption unless a source is linked, and the benchmarks come from similar situations, not identical apps.</p>
+<h2>Benchmarks</h2>
+<p>Most targets have a reasonable outside anchor. Receivers who become givers and returning givers only have loose anchors, covered below the table. All targets are rough estimates from what I found, to be replaced by real data from the first year.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Input (target)</th>
+<th>Closest benchmark</th>
+<th>What it suggests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Started gifts that get sent (60%)</td>
+<td>70.22% of online shopping carts are abandoned, average of 50 studies; 42% of those shoppers were only browsing (<a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">Baymard</a>)</td>
+<td>Ambitious but defensible. Starting a gift shows stronger intent than browsing a shop</td>
+</tr>
+<tr>
+<td>Effect of asking for an account up front</td>
+<td>18% of shoppers who abandon name forced account creation as a reason (<a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">Baymard</a>)</td>
+<td>The sign in A/B test could see up to about 1 in 5 givers lost</td>
+</tr>
+<tr>
+<td>Non-customer receivers who open a bank account (2%)</td>
+<td>68% of Europeans abandoned a financial application in the past year; 7,600 people in 14 countries including the Netherlands (<a href="https://www.signicat.com/press-releases/the-battle-to-onboard-2022" target="_blank" rel="noopener">Signicat, 2022</a>)</td>
+<td>Even people who meant to apply drop off. A receiver with no plan to switch converts far less, so 2% may be optimistic</td>
+</tr>
+<tr>
+<td>Unmoved after 90 days (under 5%)</td>
+<td>An estimated 10 to 20% of Dutch gift cards are never used, out of about 53 million a year (<a href="https://nltimes.nl/node/85185" target="_blank" rel="noopener">NL Times, 2025</a>)</td>
+<td>The bar the product has to beat</td>
+</tr>
+<tr>
+<td>Share of gifting in a payment app</td>
+<td>Paytm Lifafa: 20 million senders within two months, about 10% of Paytm's person to person payments (<a href="https://www.warc.com/en/article/paytm%3A-lifafa-%E2%80%93-marrying-a-cultural-ritual-into-a-digital-product-787872edf543419881e4f9d51d088048" target="_blank" rel="noopener">WARC</a>)</td>
+<td>Upper bound only: a huge existing user base, and money gifts are a ritual in India</td>
+</tr>
+<tr>
+<td>Growth through receivers</td>
+<td>Tikkie passed half a million users within a year of launch, spreading through people who received requests in chat (<a href="https://www.abnamro.com/en/news/tikkie-passes-half-a-million-users%20%20%20" target="_blank" rel="noopener">ABN AMRO, 2017</a>)</td>
+<td>The mechanism fits, the speed doesn't. Tikkie serves an everyday need; gifts happen a few times a year</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Returning givers (20% in the case study, lowered from 30%).</strong> Across 156,110 customers of direct to consumer brands, 18.8% placed a second order within 365 days, ranging from 7% to 44% by brand; occasional purchases like fashion and home goods sit around 10 to 17% (<a href="https://bsandco.us/blog-post/repeat-purchase-rate-benchmarks" target="_blank" rel="noopener">BS&amp;Co</a>). Gifting can do better when the product reminds people of the next occasion. Moonpig, which also owns the Dutch Greetz, gets about 9 in 10 of its revenue from existing customers. About 90% of card occasions repeat on the same date each year, the typical customer buys about 3 cards a year, and reminders drive 4 in 10 Moonpig orders (<a href="https://www.moonpig.group/media/jngjzkbe/annual-report-and-accounts-2024.pdf" target="_blank" rel="noopener">Moonpig annual report 2024</a>, <a href="https://www.moonpig.group/media/buzoiypn/moonpig-group-plc-fy25-full-year-results-presentation-script-final.pdf" target="_blank" rel="noopener">FY25 results</a>). Rough estimate: about 20% without reminders for givers. 30% looks reachable only with them, and a giver reminder is still an open decision in the PRD.</p>
+<p><strong>Receivers who become givers (10% in the case study, lowered from 15%).</strong> A study of 1.5 million Facebook Gifts birthday exchanges found that receiving a gift made people 56% more likely to give one in the next 30 days, and about 9 in 10 of those gifts went to someone other than the original sender (<a href="https://rene.kizilcec.com/wp-content/uploads/2018/03/kizilcec2018gifting.pdf" target="_blank" rel="noopener">Kizilcec et al., 2018</a>). That shows the loop exists, not its size. The closest absolute rate: across the online shops using Giftnote, about 1 in 10 gift recipients later buys from the brand, 76% of them within two months, and 74% of recipients were new to the brand (<a href="https://www.giftnote.com/blogs/the-gift-recipient-lifecycle-how-to-turn-one-time-deliveries-into-repeat-customers" target="_blank" rel="noopener">Giftnote</a>). That's a vendor's own data and likely flattering. Rough estimate: about 10%.</p>
+<p><strong>Reaching new people through gifts.</strong> 37% of gift card recipients get a card for a business they haven't tried (<a href="https://www.incomm.com/insights/try-it-youll-like-it/" target="_blank" rel="noopener">InComm, 2023, 6,475 respondents</a>). That supports gifts as a way to reach people outside a brand's own customers.</p>
+<p><strong>Gifting as a way to get people to connect a bank account.</strong> When WeChat launched digital red envelopes in 2014, over 5 million people took part in the first two days of Spring Festival, linking their bank cards to the app to send or collect (<a href="https://sg.finance.yahoo.com/news/chinese-wechat-users-sent-20-061540561.html" target="_blank" rel="noopener">Tech in Asia, 2014</a>). It shows gifting can bring people to a payment provider at scale. The difference: WeChat receivers needed a linked card to collect, which Little Something deliberately avoids, and money gifts are a ritual in China.</p>
+<p><strong>Why 2% bank account conversion still looks right.</strong> Buying again from a shop you liked (about 1 in 10 for gift recipients, above) is far easier than opening a bank account, where 68% of Europeans who start an application give up (Signicat, in the table).</p>
+<p>Not found: a sourced figure for what a Dutch bank pays to win a customer. Online estimates exist but cite no data, so the case study asks the bank for its real number.</p>
+<h2>The math</h2>
+<p>Volume decides whether this works for the bank: the yearly running cost is fixed, so each new account only gets cheaper as gifts grow. All figures in this section are assumptions.</p>
+<p><strong>Cost per new account.</strong></p>
+<div class="math"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>cost per new account</mtext><mo>=</mo><mfrac><mrow><mtext>yearly running cost</mtext><mo>+</mo><mtext>cost per gift</mtext><mo>×</mo><mtext>gifts per year</mtext></mrow><mtext>new accounts per year</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{cost per new account} = \frac{\text{yearly running cost} + \text{cost per gift} \times \text{gifts per year}}{\text{new accounts per year}}</annotation></semantics></math></span></div>
+<p>Running cost: a team of 6 at about €100k each fully loaded, which covers building and maintaining the app, plus about €200k for support and marketing. That's €800k a year. Cost per gift: about €1, the low end of the business model estimate, since bank rails remove most fees. New accounts: 85% of receivers bank elsewhere, and 2% of those open an account.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Gifts per year</th>
+<th>New accounts</th>
+<th>Total cost</th>
+<th>Cost per new account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100,000</td>
+<td>1,700</td>
+<td>€900k</td>
+<td>€529</td>
+</tr>
+<tr>
+<td>300,000</td>
+<td>5,100</td>
+<td>€1.1M</td>
+<td>€216</td>
+</tr>
+<tr>
+<td>590,000</td>
+<td>10,000</td>
+<td>€1.39M</td>
+<td>€139</td>
+</tr>
+<tr>
+<td>1,000,000</td>
+<td>17,000</td>
+<td>€1.8M</td>
+<td>€106</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Working back from the bank's goal.</strong> If the bank wants 10,000 new accounts a year from Little Something:</p>
+<div class="math"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>gifts needed</mtext><mo>=</mo><mfrac><mrow><mn>10</mn><mo separator="true" lspace="0em" rspace="0em">,</mo><mn>000</mn></mrow><mrow><mn>0.85</mn><mo>×</mo><mn>0.02</mn></mrow></mfrac><mo>≈</mo><mn>590</mn><mo separator="true" lspace="0em" rspace="0em">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">\text{gifts needed} = \frac{10{,}000}{0.85 \times 0.02} \approx 590{,}000</annotation></semantics></math></span></div>
+<p>At about 3 gifts per giver per year, that's roughly 200,000 active givers, about 2% of Tikkie's reported 10 million users. At 1% conversion instead of 2%, the gifts needed double, which is why account conversion is tracked as an input.</p>
+<p><strong>A/B test sample size.</strong> To see started gifts that get sent move from 60% to 65%, with 95% confidence and 80% power:</p>
+<div class="math"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1.96</mn><mo>+</mo><mn>0.84</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>×</mo><mo stretchy="false">(</mo><mn>0.60</mn><mo>×</mo><mn>0.40</mn><mo>+</mo><mn>0.65</mn><mo>×</mo><mn>0.35</mn><mo stretchy="false">)</mo></mrow><mrow><mn>0.0</mn><msup><mn>5</mn><mn>2</mn></msup></mrow></mfrac><mo>≈</mo><mn>1</mn><mo separator="true" lspace="0em" rspace="0em">,</mo><mn>500</mn><mtext> givers per version</mtext></mrow><annotation encoding="application/x-tex">n = \frac{(1.96 + 0.84)^2 \times (0.60 \times 0.40 + 0.65 \times 0.35)}{0.05^2} \approx 1{,}500 \text{ givers per version}</annotation></semantics></math></span></div>
+<p>So the test can't run at launch. It waits until about 3,000 givers have started a gift.</p>
+<h2>Similar cases outside gifting</h2>
+<p>When a category has little public data, products with the same shape can stand in. Here that means products where someone gets value without an account and may later start sending themselves, or products people use only a few times a year. Several sources below are secondhand and marked as such.</p>
+<p><strong>Receivers who become senders.</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Product</th>
+<th>How the loop works</th>
+<th>What's known</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DocuSign</td>
+<td>Signers sign without an account; after signing they can create a free account that keeps a copy of the document and lets them send</td>
+<td>The loop brought 130,000 new unique users a day. A test of the free account offer after signing raised account creation by 15%, and walking new users through their first send raised signer to sender conversion by 10% (<a href="https://mixpanel.com/customers/docusign-accelerates-growth/" target="_blank" rel="noopener">Mixpanel case study</a>)</td>
+</tr>
+<tr>
+<td>Calendly</td>
+<td>Invitees book a meeting without an account and see "Get your own link"</td>
+<td>About 70% of sign ups come from the loop, per its product chief on Lenny's Podcast (secondhand, via <a href="https://dexa.ai/s/abH_LCY8" target="_blank" rel="noopener">Dexa summary</a>)</td>
+</tr>
+<tr>
+<td>PayPal and Venmo</td>
+<td>Receiving money pushes people to open an account</td>
+<td>Person to person payments were "an increasingly meaningful source of new consumer accounts" when PayPal added 8.7 million in one quarter of 2017; no rate given (<a href="https://newsroom.paypal-corp.com/Mobile-and-P2P-Payments-Soar-to-New-Heights" target="_blank" rel="noopener">PayPal</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>What this tells Little Something: none of these publish an absolute rate, and they're used weekly, so their loops spin much faster. Two lessons carry over. Offering the account after the moment, with something to keep, is the pattern that works, which matches decision 2 and the "keep as a memory" feature. And a loop doesn't need to be large to matter:</p>
+<div class="math"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>K</mi><mo>=</mo><mtext>gifts per giver per year</mtext><mo>×</mo><mtext>share of receivers who become givers</mtext><mo>=</mo><mn>3</mn><mo>×</mo><mn>0.10</mn><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">K = \text{gifts per giver per year} \times \text{share of receivers who become givers} = 3 \times 0.10 = 0.3</annotation></semantics></math></span></div>
+<p>A K of 0.3 means every 10 givers the bank wins through marketing bring about 3 more for free. Growth guides treat a K below 1 as normal and anything above about 0.15 as healthy (<a href="https://www.flowjam.com/blog/viral-loop-examples-saas-the-definitive-playbook-for-engineering-self-sustaining-growth" target="_blank" rel="noopener">Flowjam</a>, secondhand). So 10% is a modest target that still matters.</p>
+<p><strong>Returning givers.</strong> Products bought a few times a year, tied to occasions, cluster in the same range: jewelry around 10 to 12% repeat within a year (<a href="https://conversion.studio/blog/ecommerce-benchmarks" target="_blank" rel="noopener">Conversion Studio</a>, directional), travel agencies 15 to 20% within 24 months with strong operators at 35 to 45% (<a href="https://resources.rework.com/libraries/travel-tour-growth/customer-retention-in-travel" target="_blank" rel="noopener">Rework</a>, secondhand). Both point to occasion reminders and follow up as what separates the strong ones, the same lesson as Moonpig. That supports about 20% without giver reminders.</p>
+<h2>Tracked, not targeted</h2>
+<p>Measured from day one to explain the inputs, but with no targets: drop off and time at each step, how long it takes to pick an amount, which looks, effects and fonts people use, the prompt button, scheduling, reminders, how gifts are shared, QR code versus link, occasions, amounts and payment methods.</p>
+</main>
+<footer>Little Something is a self-directed concept by Gunay.</footer>
+</body>
+</html>

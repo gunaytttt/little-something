@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRD · Little Something</title>
+<meta name="description" content="PRD, a working document behind the Little Something case study by Gunay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a quiet, neutral reading page. Product first (hero phone + step cards with real screens), then the story in a 68ch column. The screens carry the brand; the page only borrows its rose and cobalt for accents. */
+:root{
+  --bg:#f6f4f5; --surface:#fbf9fa; --ink:#1d1a1c; --muted:#686165; --line:#e4dfe2;
+  --rose:#b8435f; --cobalt:#3a57b8; --rose-soft:#f7e4e9; --cobalt-soft:#e5eaf8;
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;padding:0 max(16px,env(safe-area-inset-left,0px)) 80px}
+main{max-width:760px;margin:0 auto}
+.back{display:inline-block;margin:32px 0 8px;font-size:15px;color:var(--cobalt);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,46px);margin:12px 0 8px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:20px;margin:32px 0 8px}h4{font-size:17px;margin:24px 0 6px}
+p,ul,ol{margin:0 0 14px}li{margin:4px 0}
+a{color:var(--cobalt);text-underline-offset:3px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+em{color:var(--muted)}
+.tablewrap{overflow-x:auto;margin:16px 0 20px;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(40,22,30,.05),0 8px 24px -10px rgba(40,22,30,.16)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.math{overflow-x:auto;margin:12px 0 18px;padding:14px 16px;background:var(--surface);border-radius:12px}
+blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rose);color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em}
+footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html#appendix">&larr; Back to the case study</a>
+<p class="meta">Little Something · Working document · November 2026</p>
+<h1>PRD</h1>
+<p><em>Working document, last updated November 2026. Most of it was written before the launch path was chosen; section 12 lists what that changes. Self-directed portfolio project. Every requirement traces back to the discovery research; anything that can't is marked as a design bet.</em></p>
+<h2>1. Summary</h2>
+<p>Little Something lets people give money as a gift that carries the giver's intent through a personal, creative presentation instead of a spending restriction. The receiver keeps full freedom to use the money however serves them best.</p>
+<h2>2. Problem</h2>
+<p>Giving money digitally feels awkward for both sides. Givers have no natural way to attach effort or intent to a digital money gift, and receivers often want money but rarely say so. So money gifts arrive feeling generic (57% say a digital gift can feel like no effort went into it, <a href="https://newsroom.wf.com" target="_blank" rel="noopener">Wells Fargo/Ipsos</a>, 2025, US sample), and people fall back on rigid workarounds like brand-locked gift cards.</p>
+<p><strong>How might we</strong> take the awkwardness out of giving money digitally, so givers can put real effort and intent into it, and receivers can feel and appreciate that effort?</p>
+<h2>3. Goals</h2>
+<ol>
+<li>Let a giver attach a stated intent to a money gift, so it doesn't feel generic.</li>
+<li>Let the giver present the gift in a way that fits the relationship and the moment.</li>
+<li>Keep the money visibly separate as a gift until the receiver chooses to move it to their own bank.</li>
+<li>Give the receiver full freedom over how they spend it.</li>
+<li>Help both sides keep track of the gift over time: the receiver so it isn't forgotten, the giver so they know where each gift they made stands.</li>
+<li>Give giver and receiver confidence that their money is handled safely and transparently.</li>
+</ol>
+<h2>4. Non-goals for v1</h2>
+<ul>
+<li><strong>Group collection.</strong> Collecting money from several people is a mature category (Collection Pot, Kadonation, PayPal Pool, payment requests in bank apps). Little Something can sit after however the money was collected.</li>
+<li><strong>Several people editing one gift.</strong> Revisit only if evidence supports it.</li>
+<li><strong>Spending locked to brands.</strong> The product exists to avoid the rigidity of gift cards and brand-locked balances such as Hubble Money.</li>
+<li><strong>AI-written personalization.</strong> An interviewee said it would undercut the effort the gift is meant to show. This is a product principle, not an unbuilt feature.</li>
+<li><strong>Monetization.</strong> Covered in the separate business model doc. The one rule that affects the product: any fee is paid by the giver, never taken from the receiver's gift.</li>
+</ul>
+<h2>5. Users</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Functional job</th>
+<th>Emotional job</th>
+<th>Social job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Giver</strong></td>
+<td>Give financial value without guessing what someone wants</td>
+<td>Feel thoughtful, not lazy</td>
+<td>Be seen as generous and considerate</td>
+</tr>
+<tr>
+<td><strong>Receiver</strong></td>
+<td>Use the value on what matters to them right now</td>
+<td>Feel specifically thought of</td>
+<td>Acknowledge the gift without it feeling transactional</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Who it's for.</strong> Givers who have already decided money is the right gift and want it to carry effort. The moments that fit best: someone close but far away, putting money toward something specific, knowing what someone wants but not daring to pick it, or knowing someone well enough to give but not well enough to choose. Which moment to launch with is still open.</p>
+<p><strong>Not for</strong> givers who want to control how the money is spent (brand-locked gift cards already serve them), or people who love choosing a present and know exactly what to get.</p>
+<h2>6. Core flow for v1</h2>
+<p>The happy path through one gift. It sits on top of a home screen that is always there, where the giver can confirm a gift was created, resume a draft and see what they've sent (requirement group 7).</p>
+<p><strong>Platform.</strong> Mobile first by design. The demo is a responsive mobile web app, because a well-built mobile web experience is enough to show the product. Native iOS and Android apps are a real launch decision, deferred like card issuing and payment infrastructure.</p>
+<ol>
+<li><strong>Create the gift.</strong> The giver designs it first: title, note, look, effect and an optional photo. The title and note carry the intent; there is no separate intent field. They can start as a guest, without logging in.</li>
+<li><strong>Add money.</strong> The amount is set and paid after the gift is designed: intent before money. The giver verifies their identity and payment at this point, at the level the payment partner requires.</li>
+<li><strong>Add the receiver's contact (optional).</strong> A phone number or email, used only so the receiver can verify with a quick code when moving the money. The receiver's name is never collected.</li>
+<li><strong>Send.</strong> By link or QR code, through any messaging app, email or a printed card. The receiver doesn't need the app.</li>
+<li><strong>Open.</strong> Opened from the shared link, the gift starts on a sealed reveal ("[Giver] prepped this just for you"), then shows the look, the note and the amount. No account or verification is needed to open it. Opened again later from the Receiving tab, it goes straight to the opened gift.</li>
+<li><strong>Move it to the bank.</strong> Whenever the receiver chooses, the full amount moves at once to their own account. Light verification happens here, not at opening, so opening stays effortless. What they do with the money afterwards happens in their own bank.</li>
+</ol>
+<h2>7. Requirements</h2>
+<p>Each group traces to the goal with the same number. Where a rule needed judgment rather than direct evidence, the reasoning is written out so it can be challenged.</p>
+<h3>1. Attach a stated intent</h3>
+<ol>
+<li>The giver must be able to write a short title and a note. Together they carry the intent.</li>
+<li>The giver must be able to add at least one image.</li>
+<li>The giver must be able to choose the gift's look.</li>
+<li>The system must not write or customize content for the giver. It may offer optional prompts.</li>
+<li>The look, title, note and amount must be visible to the receiver when they open the gift.</li>
+</ol>
+<h3>2. Present the gift to fit the moment</h3>
+<ol>
+<li>The giver must be able to share the gift by link through messaging apps, social media and email, using the phone's native share sheet.</li>
+<li>The system must be able to create a printable version of the gift for handing over in person.</li>
+<li>The giver must be able to schedule a gift for a later date. <em>Reasoning: apps can't send a message through WhatsApp on someone's behalf, so a scheduled gift means a reminder at the chosen time plus a one-tap send. In the demo the reminder shows as a status on the home screen.</em> Sending a scheduled gift early cancels the schedule after a one-line confirm.</li>
+<li>Rich link previews (title and image in the chat) need server-side tags and are left out of the demo.</li>
+</ol>
+<h3>3. Keep the money separate until the receiver moves it</h3>
+<ol>
+<li>It must be clear to the receiver that they can move the amount to their own bank account or card.</li>
+<li>It must be clear what the gift can and can't do. The amount moves all at once, by design. <em>Reasoning: once the money is in the receiver's own account, splitting it between a bill and a treat happens with their bank's tools, so the product doesn't need balance tracking and doesn't quietly become a bank.</em> Money can't be moved back into a gift.</li>
+<li>There is no holding limit or expiry for now, until the payment partner's terms are known.</li>
+</ol>
+<h3>4. Full freedom for the receiver</h3>
+<ol>
+<li>The system must not restrict, track or ask for justification of how the money is spent.</li>
+<li>The receiver can move the money immediately or at any later point.</li>
+<li>The giver is never told whether or when the money was moved. They only see that the gift was opened.</li>
+</ol>
+<h3>5. Keep track of the gift over time</h3>
+<ol>
+<li>The receiver must be able to save the gift as an image to their own device.</li>
+<li>The receiver can set a reminder. An account is offered once, at that moment, and is never needed to open the gift or move the money.</li>
+</ol>
+<h3>6. Account, verification and funding</h3>
+<ol>
+<li>The giver must verify identity and payment before adding money. <em>Reasoning: trust in a new app holding money is a precondition for adoption, and moving money for others is regulated. Competitors use a licensed partner rather than holding funds themselves.</em></li>
+<li>Verification is light to view a gift and real only when money moves, the same pattern Tikkie, Venmo and PayPal use.</li>
+<li>The system must enforce a maximum amount per gift, tiered by verification level. Thresholds depend on the payment partner.</li>
+<li>The giver must be able to choose from more than one payment method (for example iDEAL, card, digital wallets). The demo uses Apple Pay only.</li>
+<li>The payment screen must show trust and security information before payment.</li>
+<li>The system must show when the money is expected to arrive in the gift.</li>
+</ol>
+<h3>7. Home screen and drafts</h3>
+<ol>
+<li>The giver has a home screen showing their latest gifts and the status of each. Giver statuses: Draft, Ready to send, Sent, Opened. Receiver statuses: New, Opened, In your bank.</li>
+<li>A "see all" page shows every gift, including archived ones.</li>
+<li>Tapping a draft opens it for editing. Tapping any other gift opens its full preview with a status card on top.</li>
+<li>A clear action on the home screen starts a new gift.</li>
+<li>A gift is saved as a draft automatically while it's being made, and survives logging out.</li>
+<li>The giver can resume a draft, delete a draft, and archive a completed gift.</li>
+<li>Deleting a gift that already holds money isn't offered until the cancel and refund rules are decided (open decision 1).</li>
+</ol>
+<h2>8. Success signals (draft)</h2>
+<p>Not yet a metrics framework. Targets will come with the go-to-market plan.</p>
+<ul>
+<li>Share of gifts with a stated intent, at any level, versus none</li>
+<li>Share of gifts personalized beyond an amount (note, photo, look)</li>
+<li>Whether receivers describe it as still feeling like a gift after they've used the money (qualitative)</li>
+</ul>
+<h2>9. Decisions made</h2>
+<p>Mostly from the October 2026 design review.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name: Little Something</td>
+<td>"Gift Pot" was the working name</td>
+</tr>
+<tr>
+<td>Design the gift first, add money second</td>
+<td>Puts the care ahead of the transaction</td>
+</tr>
+<tr>
+<td>Intent lives in the title and note, no separate field</td>
+<td>A category picker would start to feel like a brand-locked gift card</td>
+</tr>
+<tr>
+<td>The giver sees "Opened", never whether the money moved</td>
+<td>Opening is what givers wait for; spending stays private to the receiver</td>
+</tr>
+<tr>
+<td>No reminder for the giver to nudge the receiver; the receiver sets their own</td>
+<td>Keeps the receiver's privacy and freedom. Revisit only if research and real data show otherwise</td>
+</tr>
+<tr>
+<td>The receiver's name is never collected</td>
+<td>Keeps the flow short; givers can still type a name in the title or note</td>
+</tr>
+<tr>
+<td>No holding limit or expiry for now</td>
+<td>The payment partner's terms aren't known yet</td>
+</tr>
+<tr>
+<td>The reveal plays only when opened from a link</td>
+<td>It's a one-time moment; the Receiving tab opens the gift directly</td>
+</tr>
+<tr>
+<td>Optional receiver account, offered once at the reminder moment</td>
+<td>Lets receivers keep their gifts in one place without forcing sign up</td>
+</tr>
+<tr>
+<td>Demo uses Apple Pay only</td>
+<td>Enough to show payment without building every method</td>
+</tr>
+<tr>
+<td>Launch path: a standalone app owned by a bank</td>
+<td>See the business model doc</td>
+</tr>
+</tbody>
+</table></div>
+<h2>10. Open decisions</h2>
+<ol>
+<li><strong>Cancel and refund rules.</strong> What happens to money in a gift that is deleted or never opened? Current proposal: drafts can be deleted anytime; a gift with money but not yet sent can be cancelled and refunded; a sent but unopened gift can be cancelled (refund, the link stops working); an opened gift is locked. Partly depends on the payment partner's rules.</li>
+<li><strong>Verification levels.</strong> How much identity checking adding and moving money requires, and the amount limits for each level. This has regulatory weight and depends on the partner.</li>
+<li><strong>Who controls notification timing</strong>, the giver or the receiver.</li>
+<li><strong>Wallet integration</strong> (Apple and Google Wallet), suggested by an interviewee as a way to stop gifts being forgotten. A wallet pass is a reminder only, not a way to pay. v1 or later?</li>
+<li><strong>Spending by card later.</strong> A tap-to-pay card in Apple or Google Wallet would let receivers spend the gift directly, without moving the money to a bank. It's a stronger experience but a real architectural fork, so it stays v2, following the same wallet first, card later path Lydia took with Treezor.</li>
+<li><strong>Thank you "note". </strong>Do we need to give receiver a way to say thank you in our app or will they use existing channels to do it. It is only worth adding if it will offer something more than their ways of doing. Similar to the reveal and the card. We can have customizable gif creator like Tikkie, animation or even a short note.</li>
+<li><strong>Receivers from other banks.</strong> How much identity checking can a receiver who banks elsewhere go through when moving the money before it becomes friction?</li>
+<li><strong>Brand freedom.</strong> How much of the playful brand and product decisions would a bank owner leave to the product team?</li>
+<li><strong>Giver fee.</strong> When to switch it on, at what level, and what has to be true first.</li>
+</ol>
+<h2>11. Prioritization</h2>
+<p>Two MoSCoW passes, kept separate on purpose: one for the demo built for this case study, one for what a real launch would need. Money movement is mocked in the demo, so the payment work only appears in the launch pass.</p>
+<h3>Demo</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>What</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Must</td>
+<td>Title and note</td>
+<td>The core differentiator itself</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Share by link</td>
+<td>Without it the giving flow can't finish</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Receiver sees the gift and can move the money</td>
+<td>Closes the loop</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Save the gift as an image</td>
+<td>Strongest evidence (forgotten gifts), cheap to build</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Home screen with statuses, create action, draft autosave and resume</td>
+<td>Without them a giver can't confirm a gift exists or get back to it</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Photo and look</td>
+<td>Strengthens the demo a lot</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Printable card</td>
+<td>Designed; well evidenced by the handover ritual every interviewee described</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Money rules shown (all at once, no moving back)</td>
+<td>Clarity for the receiver</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Optional receiver account at the reminder moment</td>
+<td>Login is mocked in the demo</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Schedule a gift</td>
+<td>Needs only the UI and a status in the demo</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Drafts survive logging out</td>
+<td>Mostly relevant with real accounts</td>
+</tr>
+<tr>
+<td>Won't</td>
+<td>Telling the giver the money moved</td>
+<td>A principle, not a missing feature</td>
+</tr>
+<tr>
+<td>Won't</td>
+<td>Reminders sent to the receiver's contact</td>
+<td>Low payoff for a first demo; the contact is used for verification only</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Real launch</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>What</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Must</td>
+<td>Adding and moving money through the payment partner</td>
+<td>The product doesn't work without it</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Identity verification</td>
+<td>Legally required</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Verified notifications from the partner (webhooks)</td>
+<td>Without them "money is ready" can't be trusted</td>
+</tr>
+<tr>
+<td>Must</td>
+<td>Trust and security information at payment</td>
+<td>Cheap, and tied directly to goal 6</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>More than one payment method</td>
+<td>One method, such as iDEAL, could launch first</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Amount limits by verification level</td>
+<td>Could start as one conservative limit</td>
+</tr>
+<tr>
+<td>Should</td>
+<td>Reconciliation with the partner's records</td>
+<td>Could start manual</td>
+</tr>
+<tr>
+<td>Could</td>
+<td>Expected arrival time</td>
+<td>Clarity, not launch blocking</td>
+</tr>
+<tr>
+<td>Won't</td>
+<td>Giver reminder to nudge the receiver</td>
+<td>Decided against for now, to protect the receiver's privacy</td>
+</tr>
+<tr>
+<td>Won't</td>
+<td>Card issuing and tap to pay</td>
+<td>v2, wallet first and card later</td>
+</tr>
+</tbody>
+</table></div>
+<p>The technical and risk memo covers the reasoning behind the launch pass.</p>
+<h2>12. What changes with the bank-owned launch</h2>
+<p>In November 2026 I chose to launch Little Something as a standalone app owned by a bank, the way Tikkie works for ABN AMRO (see the business model doc). Most of this PRD was written before that decision. The product itself doesn't change: the flow, requirements and demo priorities hold either way. These parts do:</p>
+<ol>
+<li><strong>The payment partner is the bank.</strong> It holds the licence and moves the money, so there is no separate payment provider. Treezor and the Lydia example in open decision 6 become background research, not the plan.</li>
+<li><strong>Verification depends on where people bank.</strong> Givers and receivers who already bank with the owner are verified. People from other banks still need checks when money moves (open decision 8).</li>
+<li><strong>Payment methods.</strong> With a bank behind it, iDEAL and bank transfers cost far less than cards, so they would likely come first after the demo.</li>
+<li><strong>New open decisions</strong> on brand freedom and the giver fee (open decisions 9 and 10).</li>
+</ol>
+<p>If I had chosen the launch path earlier, I would have spent less time on payment vendors and looked at the rules for building inside a bank sooner.</p>
+</main>
+<footer>Little Something is a self-directed concept by Gunay.</footer>
+</body>
+</html>

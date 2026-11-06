@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Model · Little Something</title>
+<meta name="description" content="Business Model, a working document behind the Little Something case study by Gunay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a quiet, neutral reading page. Product first (hero phone + step cards with real screens), then the story in a 68ch column. The screens carry the brand; the page only borrows its rose and cobalt for accents. */
+:root{
+  --bg:#f6f4f5; --surface:#fbf9fa; --ink:#1d1a1c; --muted:#686165; --line:#e4dfe2;
+  --rose:#b8435f; --cobalt:#3a57b8; --rose-soft:#f7e4e9; --cobalt-soft:#e5eaf8;
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141214; --surface:#1d1a1d; --ink:#f1edef; --muted:#a69ea2; --line:#332e32;
+  --rose:#ec7f9b; --cobalt:#8aa2f2; --rose-soft:#3a2229; --cobalt-soft:#222a44; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;padding:0 max(16px,env(safe-area-inset-left,0px)) 80px}
+main{max-width:760px;margin:0 auto}
+.back{display:inline-block;margin:32px 0 8px;font-size:15px;color:var(--cobalt);text-decoration:none;font-weight:600}
+.back:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(32px,5vw,46px);margin:12px 0 8px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:20px;margin:32px 0 8px}h4{font-size:17px;margin:24px 0 6px}
+p,ul,ol{margin:0 0 14px}li{margin:4px 0}
+a{color:var(--cobalt);text-underline-offset:3px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+em{color:var(--muted)}
+.tablewrap{overflow-x:auto;margin:16px 0 20px;background:var(--surface);border-radius:14px;box-shadow:0 1px 2px rgba(40,22,30,.05),0 8px 24px -10px rgba(40,22,30,.16)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.math{overflow-x:auto;margin:12px 0 18px;padding:14px 16px;background:var(--surface);border-radius:12px}
+blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--rose);color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em}
+footer{max-width:760px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html#appendix">&larr; Back to the case study</a>
+<p class="meta">Little Something · Working document · November 2026</p>
+<h1>Business Model</h1>
+<p><em>Working document, November 2026. How the product reaches the market, how it makes money, what a gift costs and what the owner gains. Figures marked as estimates are my own assumptions, not vendor quotes.</em></p>
+<h2>Summary</h2>
+<p>Little Something launches as a <strong>standalone app owned by a bank</strong>, following the Tikkie model. The app keeps its own brand and works for customers of any Dutch bank. The bank holds the licence and moves the money, so there's no separate payment provider and no fixed minimums.</p>
+<p>Individuals pay little or nothing, so the product can spread. Money comes from a small giver fee, premium looks, printed cards and brand offers. For the bank, the bigger gains are reach beyond its own customers, new accounts from receivers, and deposits waiting in gifts.</p>
+<p>The current flow and designs stay as they are. They were designed for a standalone app, and this path keeps it standalone.</p>
+<h2>Launch paths considered</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>How it works</th>
+<th>Main upside</th>
+<th>Main risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standalone startup with a payment provider (Treezor)</td>
+<td>Own company; a licensed provider holds the money</td>
+<td>Full control of brand and roadmap</td>
+<td>High fixed costs from day one; trust built from zero</td>
+</tr>
+<tr>
+<td>Feature inside a bank's app</td>
+<td>Built into the bank's existing app</td>
+<td>Cheapest, fastest reach; trust comes with the bank</td>
+<td>Only that bank's customers can use it; the playful brand gets lost</td>
+</tr>
+<tr>
+<td><strong>Standalone app owned by a bank (chosen)</strong></td>
+<td>Separate app and brand, bank behind it, open to any Dutch bank's customers</td>
+<td>Keeps brand and designs; bank's licence and rails; reach across banks</td>
+<td>Needs a bank willing to invest in a consumer product outside its main app</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why the chosen path:</strong></p>
+<ul>
+<li>It fits the existing standalone designs and the personal, playful positioning.</li>
+<li>It removes the provider minimums that make standalone unit economics hard (see unit economics).</li>
+<li>Precedents point the same way: Tikkie and the other bank-owned apps below became national defaults.</li>
+<li>Trust is a launch problem for a new app holding money. A bank behind it helps without diluting the brand.</li>
+</ul>
+<p><strong>Reference case: Tikkie.</strong> ABN AMRO owns it, but anyone with a Dutch bank account can use it. People paying don't even need the app, and it reports over 10 million users. It's free for individuals, so ABN AMRO earns nothing directly from consumer Tikkies. It earns from:</p>
+<ul>
+<li><strong>Business Tikkie:</strong> €7.50 a month including 20 paid Tikkies, then €0.15 to €0.25 per paid Tikkie depending on volume, excluding VAT, plus €0.10 per SMS. It mostly requires an ABN AMRO business account, and almost 40,000 businesses use it.</li>
+<li>Paid cashback and deposit refund services for companies.</li>
+<li>Brand campaigns and advertising inside the app.</li>
+</ul>
+<p>The free consumer side is what makes the paid side valuable.</p>
+<p>Sources: <a href="https://www.abnamro.nl/en/personal/internet-and-mobile/apps/tikkie/index.html" target="_blank" rel="noopener">ABN AMRO Tikkie page</a>, <a href="https://www.tikkie.me/faq/consumer/general" target="_blank" rel="noopener">Tikkie FAQ</a>, <a href="https://www.tikkie.me/zakelijk" target="_blank" rel="noopener">Tikkie business pricing</a>, <a href="https://www.bank.nl/kennisbank/wat-is-een-tikkie" target="_blank" rel="noopener">Bank.nl on how ABN AMRO earns from Tikkie</a></p>
+<h2>Precedents: bank-owned standalone apps</h2>
+<p>Tikkie isn't a one-off. Banks in several countries run separate apps with their own brands, and the ones that failed are as useful as the ones that worked.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>App</th>
+<th>Owner</th>
+<th>What happened</th>
+<th>Lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MobilePay (Denmark, 2013)</td>
+<td>Danske Bank</td>
+<td>Became Denmark's most loved brand; merged with Vipps in 2022</td>
+<td>Open to any bank's customers, it became the national default</td>
+</tr>
+<tr>
+<td>Vipps (Norway, 2015)</td>
+<td>DNB</td>
+<td>1 million users in six months; Vipps MobilePay now has 12M+ users</td>
+<td>Same model, same result</td>
+</tr>
+<tr>
+<td>TWINT (Switzerland, 2016)</td>
+<td>UBS, PostFinance and other banks</td>
+<td>6M+ users, 901M transactions in 2025; free for individuals, earns from merchants</td>
+<td>Free consumer side, paid business side</td>
+</tr>
+<tr>
+<td>NatWest Rooster Money (UK)</td>
+<td>NatWest</td>
+<td>Pocket money app kept as its own brand; free for NatWest customers, paid for others</td>
+<td><strong>Closest model:</strong> one emotional job, own brand</td>
+</tr>
+<tr>
+<td>DBS PayLah! (Singapore)</td>
+<td>DBS</td>
+<td>Separate wallet that already includes eGifts</td>
+<td>Banks already offer gifting, so the experience must be better</td>
+</tr>
+<tr>
+<td>Zelle app (US)</td>
+<td>Bank-owned network</td>
+<td>Shut down in 2025; only about 2% of payments went through it</td>
+<td>Once banks build the feature in, a separate app loses its reason to exist</td>
+</tr>
+<tr>
+<td>Finn by Chase (US)</td>
+<td>JPMorgan Chase</td>
+<td>Closed about a year after launch</td>
+<td>A second bank account under a new name gets folded back</td>
+</tr>
+<tr>
+<td>Bo (UK)</td>
+<td>RBS/NatWest</td>
+<td>Shut down about six months after launch</td>
+<td>Same pattern</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What this means for Little Something:</strong></p>
+<ol>
+<li>Separate apps survive when they do a job the main banking app can't: reaching every bank's customers, or one emotional job with its own brand.</li>
+<li>The biggest risk is the Zelle one. If gifting becomes a standard feature in every banking app, the defence is the experience: the reveal, the card and the money keeping its gift label.</li>
+<li>There's a business model to copy: free for individuals, revenue from merchants, brands or non-customers.</li>
+</ol>
+<p>Sources: <a href="https://vippsmobilepay.com/en-DK/about" target="_blank" rel="noopener">Vipps MobilePay</a>, <a href="https://www.twint.ch/en/company/about-us/" target="_blank" rel="noopener">TWINT</a>, <a href="https://www.natwest.com/support-centre/help-with-your-product/rooster-money/what-is-natwest-rooster-money.html" target="_blank" rel="noopener">NatWest Rooster Money</a>, <a href="https://www.dbs.com.sg/personal/digital-banking/paylah" target="_blank" rel="noopener">DBS PayLah!</a>, <a href="https://www.paymentsdive.com/news/early-warning-services-drops-zelle-app-bank-payment-transfers/744073/" target="_blank" rel="noopener">Zelle app shutdown</a>, <a href="https://www.americanbanker.com/news/where-did-jpmorgan-chases-finn-experiment-go-wrong" target="_blank" rel="noopener">Finn</a>, <a href="https://www.paymentsdive.com/ex/mpt/news/rbs-shuts-down-digital-bank-bo-merges-accounts-into-mettle" target="_blank" rel="noopener">Bo</a></p>
+<h2>Revenue streams</h2>
+<p><strong>Principle: the giver pays, never the receiver.</strong> Taking a fee out of the gift (the receiver opens €40 and finds €38) breaks the signal of care the product is built on.</p>
+<ol>
+<li><strong>Free at launch, and the core stays free.</strong> Every look and printing the card at home stay free for good, because the experience is what the product competes on. Premium looks could be tested later, but the added value is doubtful.</li>
+<li><strong>Brand offers tied to the gift's intent.</strong> A gift "for a camera" shows the receiver a discount at camera shops, and the product earns affiliate commission. The money stays fully flexible, so brands compete for attention instead of limiting where it can go.</li>
+<li><strong>Giver suggestions with store links (idea to test).</strong> When sending, the giver can add an optional suggestion: "You don't have to, but if you want, put it toward a jacket from your favourite store." The suggestion comes from the giver, so it keeps the effort with them, and a store link can earn a commission. Risk: with a store link it starts to feel like a gift card, so it stays optional and quiet.</li>
+<li><strong>Spending ideas after opening (idea to test).</strong> A prompt like "Ready to treat yourself?" opens a chat that suggests ways to spend the gift, using the note and what the gift is for as context. It has to appear on the opened gift or before "Move it to your bank", because once the money reaches the bank, purchases can't be tracked. Popular choices could be shown once there's data. Risk: it may feel pushy at the moment someone is enjoying the gift.</li>
+<li><strong>Small giver fee per gift.</strong> Framed like buying a greeting card, not a transfer fee. Switched on later, once givers come back to give again.</li>
+<li><strong>For the bank: indirect value</strong> (next section).</li>
+</ol>
+<p><strong>Later, not v1:</strong> interchange from a card (small, since EU consumer debit interchange is capped at 0.2%), and cross-border gifts with a currency margin (real revenue, but it pulls toward competing with Wise).</p>
+<h2>What the bank gains</h2>
+<p>Banks in the Netherlands make almost nothing on consumer transfers (SEPA is free for consumers, and so is Tikkie). So the case for the bank isn't fee revenue:</p>
+<ul>
+<li><strong>New customers.</strong> Every receiver who isn't a customer has a reason to open an account. Compare new accounts per gift with the bank's usual cost of winning a customer. This is a bet to test: none of the bank-owned apps below publish how many accounts they brought in.</li>
+<li><strong>Deposits.</strong> While money waits in a gift, the bank holds it and pays nothing on it. It can park that money at the European Central Bank (deposit rate 2.25% through 2026) or lend it out for more, and keeps the difference. Example, all assumptions: 10,000 gifts a month at €40, waiting two weeks on average, means about €200,000 held at any time, or roughly €4,500 a year. A supporting benefit, not a main one, and the money leaves when the receiver moves it to another bank.</li>
+<li><strong>Engagement and brand.</strong> A warm, emotional moment from a bank that's otherwise a utility.</li>
+<li><strong>Low cost to run.</strong> The bank already has the licence and rails, so internal transfers cost almost nothing. What's left is the cost to build and run the app.</li>
+</ul>
+<h3>What bank-owned standalone apps gave their banks</h3>
+<p>Public proof that these apps turned non-customers into bank customers is thin. What the banks did get:</p>
+<ul>
+<li><strong>Tikkie (ABN AMRO):</strong> over 10 million users and €7.4 billion paid through it in 2024, plus tens of thousands of business users on the paid side. ABN AMRO talks about trust and reach, not account openings.</li>
+<li><strong>Vipps (DNB):</strong> 1 million users within six months, open to anyone with a Norwegian bank account. Credited with new customers, purchase data and revenue of its own. Over 100 other banks later bought into it, so DNB ended up owning a national standard others paid to join.</li>
+<li><strong>MobilePay (Danske Bank):</strong> the leading app in Denmark for customers and non-customers, which every other Danish bank eventually moved to. After the 2022 merger, Danske Bank owns 27.8% of Vipps MobilePay: strategic position and asset value rather than accounts.</li>
+<li><strong>Rooster Money (NatWest):</strong> bought in 2021 with about 130,000 users, explicitly to reach younger customers early.</li>
+</ul>
+<p>So the case to a bank is reach beyond its own customers, a younger audience, a brand people like and possibly an asset that gains value on its own. New accounts from receivers is a hypothesis to measure.</p>
+<p>Sources: <a href="https://www.abnamro.com/en/news/tikkie-payments-reach-record-7-4-billion-euros-in-2024" target="_blank" rel="noopener">Tikkie 2024 (ABN AMRO)</a>, <a href="https://www.abnamro.com/en/news/tikkie-launches-new-business-app" target="_blank" rel="noopener">Tikkie Zakelijk (ABN AMRO)</a>, <a href="https://www.bundl.com/articles/examples-dnbs-vipps-norways-leading-smart-payments-app" target="_blank" rel="noopener">Vipps (Bundl)</a>, <a href="https://en.wikipedia.org/wiki/MobilePay" target="_blank" rel="noopener">MobilePay (Wikipedia)</a>, <a href="https://vippsmobilepay.com/en-DK/about" target="_blank" rel="noopener">Vipps MobilePay about</a>, <a href="https://www.fintechfutures.com/fintech-start-ups/natwest-acquires-child-banking-start-up-roostermoney" target="_blank" rel="noopener">NatWest acquires RoosterMoney (FinTech Futures)</a>, <a href="https://convextrade.com/metrics/ecb-deposit-rate/history/2026" target="_blank" rel="noopener">ECB deposit rate 2026</a></p>
+<h3>Other owners considered</h3>
+<p>The case study leads with a bank-owned app and lists other possible owners. The evidence behind each:</p>
+<ul>
+<li><strong>Money transfer apps (Paysend, Remitly).</strong> Occasions are a big reason people send money abroad: in a Remitly survey of 2,500+ senders, over a quarter send for holidays, weddings and celebrations, and 26% of December remittances go to special occasions (<a href="https://news.remitly.com/company-and-product-news/holiday-remittances-boost-economies/" target="_blank" rel="noopener">Remitly</a>).</li>
+<li><strong>Social or messaging apps launching payments.</strong> WeChat's 2014 digital red envelopes got over 5 million people to link bank cards in two days (<a href="https://sg.finance.yahoo.com/news/chinese-wechat-users-sent-20-061540561.html" target="_blank" rel="noopener">Tech in Asia via Yahoo</a>). X began rolling out X Money in the US in July 2026 (<a href="https://techcrunch.com/2026/07/28/elon-musks-x-money-app-is-rolling-out-in-the-u-s" target="_blank" rel="noopener">TechCrunch</a>). In the West these features often struggle: Snapchat closed Snapcash in 2018 (<a href="https://techcrunch.com/2018/07/22/snapcashing-out" target="_blank" rel="noopener">TechCrunch</a>), LINE Pay closed in Japan after merging into PayPay (<a href="https://www.lycorp.co.jp/en/news/release/008632" target="_blank" rel="noopener">LY Corporation</a>), and WhatsApp's peer-to-peer payments run only in India and Brazil (<a href="https://www.infobip.com/blog/whatsapp-payments" target="_blank" rel="noopener">Infobip</a>).</li>
+<li><strong>A feature inside a bank's app, or my own startup.</strong> Covered in Launch paths considered above.</li>
+</ul>
+<h2>Unit economics (estimates)</h2>
+<p>Why the standalone startup path is hard, using a <strong>€40 gift</strong> (the middle of the €15 to €100 range people described in interviews).</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Cost per gift, standalone with a payment provider</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funding by card or Apple Pay (Stripe EU, 1.5% + €0.25)</td>
+<td>about €0.85</td>
+</tr>
+<tr>
+<td>Or funding by iDEAL instead (Stripe €0.29, Mollie €0.32)</td>
+<td>about €0.30</td>
+</tr>
+<tr>
+<td>ID check for new users (€0.50 to €1.35 per check, spread over their gifts)</td>
+<td>about €0.30 to €0.70</td>
+</tr>
+<tr>
+<td>Moving the money to the receiver's bank</td>
+<td>about €0.25</td>
+</tr>
+<tr>
+<td>Provider fees per account and transaction (Treezor prices on request only)</td>
+<td>about €0.20 to €0.50</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>roughly €1 to €2.30</strong></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A flat <strong>€1.99 giver fee</strong> roughly covers these costs, leaving about €0.50 to €1 per gift.</li>
+<li><strong>Fixed costs are the real problem.</strong> Providers that publish prices start at about €3,000 a month (Swan) or £15,000 up front plus at least £4,000 a month (Griffin).</li>
+<li><strong>Break-even example:</strong> about €6,000 a month in fixed costs ÷ about €0.75 per gift ≈ <strong>8,000 gifts a month</strong> just to cover them.</li>
+</ul>
+<p><strong>Bank-owned path:</strong> provider fees and minimums disappear, and funding and payout costs drop to the bank's internal cost. The giver fee becomes optional, a positioning choice rather than a way to survive.</p>
+<p><strong>Comparison: Partiful</strong> never touches money, so it runs on hosting and messaging costs of a few cents per message. A product that holds money can't run that cheaply.</p>
+<p>Sources: <a href="https://europeanpurpose.com/category/banking-as-a-service-providers" target="_blank" rel="noopener">European BaaS pricing</a>, <a href="https://europeanpurpose.com/tool/treezor" target="_blank" rel="noopener">Treezor review</a>, <a href="https://fintechnologica.com/guides/baas-pricing-explained" target="_blank" rel="noopener">BaaS costs and KYC prices</a>, <a href="https://bedrijfssoftwaregids.nl/blog/mollie-vs-stripe-vs-adyen-2026/" target="_blank" rel="noopener">iDEAL fees compared</a></p>
+<h2>Considered and rejected</h2>
+<ul>
+<li><strong>Selling to companies.</strong> Work gifts go through a manager's budget as gifts, flowers or gift cards. In the Netherlands, cash given to employees is generally treated as salary, so companies prefer gifts in kind. The one place colleagues give money together, a leaving gift, needs group collection, which is out of scope.</li>
+<li><strong>Earning from gifts nobody opens.</strong> EU e-money generally has to stay redeemable, there's no expiry by design, and profiting from forgotten gifts goes against the forgetting problem the product solves.</li>
+<li><strong>Corporate accelerators</strong> (ABN AMRO with Techstars, Rabobank). Real programs, but they back founding teams with traction, and this year's themes are business infrastructure. A weak fit for a consumer gifting product at concept stage.</li>
+</ul>
+<h2>Open questions</h2>
+<ul>
+<li>When to switch on the giver fee, at what level, and what has to be true first (enough repeat givers? a clear trust signal?).</li>
+<li>How much brand freedom a bank owner would really allow.</li>
+<li>Whether brand offers feel helpful or pushy to receivers. To test with users.</li>
+<li>How much ID checking a receiver from another bank can go through before it becomes friction.</li>
+<li>Whether Rooster Money's model (free for the bank's own customers, paid for others) fits gifting, where the receiver often banks elsewhere.</li>
+<li>How defensible the experience is if banks add simple gifting to their own apps.</li>
+</ul>
+</main>
+<footer>Little Something is a self-directed concept by Gunay.</footer>
+</body>
+</html>
